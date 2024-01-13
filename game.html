@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     
+    <title>Document</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+   <h1>Bat Ball Stump Game</h1> 
+   <div class="btn-container">
+    <button onclick="
+        let random_number=Math.random()*3;
+        let computer_choice;
+        if(random_number>0&& random_number<=1){
+            computer_choice='Bat';
+        }
+        else if(random_number>1&& random_number<=2){
+        computer_choice='Ball';
+    
+        }
+        else{
+            computer_choice='Stump';
+        }
+        let result_msg;
+        if(computer_choice=='Ball')
+        {
+            result_msg='User won';
+        }
+        else if(computer_choice=='Bat')
+        {
+            result_msg='Its a tie';
+        }
+        else{
+            result_msg='Computer won';
+                }
+
+                alert(`You have chosen Bat, Computer choice is ${computer_choice} and ${result_msg}`)
+
+        ">Bat</button>
+
+    <button  onclick="
+    
+     random_number=Math.random()*3;
+    
+    if(random_number>0&& random_number<=1){
+        computer_choice='Bat';
+        
+    }
+    else if(random_number>1&& random_number<=2){
+    computer_choice='Ball';
+
+    }
+    else{
+        computer_choice='Stump';
+    }
+
+    if(computer_choice=='Ball')
+    {
+        result_msg='User tie';
+    }
+    else if(computer_choice=='Bat')
+    {
+        result_msg='Computer won';
+    }
+    else{
+        result_msg='User won';
+            }
+
+            alert(`You have chosen Ball, Computer choice is ${computer_choice} and ${result_msg}`);
+
+    ">Ball</button>
+    <button>Stump</button>
+     
+   </div>
+</body>
+</html>
