@@ -10,19 +10,8 @@
       <button
         onclick="
         let computer_choice= genrate_comp_choice();
-        let result_msg;
-        if(computer_choice=='Ball')
-        {
-            result_msg='User won';
-        }
-        else if(computer_choice=='Bat')
-        {
-            result_msg='Its a tie';
-        }
-        else{
-            result_msg='Computer won';
-                }
-
+        let result_msg=getresult(computer_choice,'Bat');
+       
                 alert(`You have chosen Bat, Computer choice is ${computer_choice} and ${result_msg}`)
 
         "
@@ -34,38 +23,63 @@
         onclick="
     
     computer_choice= genrate_comp_choice();
-
-    if(computer_choice=='Ball')
-    {
-        result_msg='User tie';
-    }
-    else if(computer_choice=='Bat')
-    {
-        result_msg='Computer won';
-    }
-    else{
-        result_msg='User won';
-            }
-
+    result_msg=getresult(computer_choice,'Ball');
+   
             alert(`You have chosen Ball, Computer choice is ${computer_choice} and ${result_msg}`);
 
     "
       >
         Ball
       </button>
-      <button>Stump</button>
+      <button onclick="
+    
+      computer_choice= genrate_comp_choice();
+      result_msg=getresult(computer_choice,'Stump');
+     
+              alert(`You have chosen Stump, Computer choice is ${computer_choice} and ${result_msg}`);
+  
+      ">Stump</button>
       <script>
         function genrate_comp_choice() {
-        let random_number = Math.random()*3;
+          let random_number = Math.random() * 3;
 
-        if (random_number > 0 && random_number <= 1) {
-          return "Bat";
-        } else if (random_number > 1 && random_number <= 2) {
-         return "Ball";
-        } else {
-          return "Stump";
+          if (random_number > 0 && random_number <= 1) { 
+            return "Bat";
+          } else if (random_number > 1 && random_number <= 2) {
+            return "Ball";
+          } else {
+            return "Stump";
+          }
         }
-    }
+        function getresult(computer_choice, user_move) {
+          if (user_move === "Bat") {
+            if (computer_choice == "Ball") {
+              return "User won";
+            } else if (computer_choice == "Bat") {
+              return "Its a tie";
+            } else {
+              return "Computer won";
+            }
+          } else if (user_move === "Ball") {
+            if (computer_choice == "Ball") {
+              return "User tie";
+            } else if (computer_choice == "Bat") {
+              return "Computer won";
+            } else {
+              return "User won";
+            }
+          } else {
+            if(computer_choice==="Bat"){
+                return "User won";
+            }
+            else if(computer_choice==="Ball"){
+                return "Computer won";
+            }
+            else{
+                return "Its a tie"
+            }
+          }
+        }
       </script>
     </div>
   </body>
