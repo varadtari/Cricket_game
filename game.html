@@ -11,10 +11,8 @@
         onclick="
         let computer_choice= genrate_comp_choice();
         let result_msg=getresult(computer_choice,'Bat');
-       
-                alert(`You have chosen Bat, Computer choice is ${computer_choice} and ${result_msg}`)
-
-        "
+       showresult('Bat',computer_choice,result_msg);
+      "
       >
         Bat
       </button>
@@ -24,8 +22,8 @@
     
     computer_choice= genrate_comp_choice();
     result_msg=getresult(computer_choice,'Ball');
-   
-            alert(`You have chosen Ball, Computer choice is ${computer_choice} and ${result_msg}`);
+    showresult('Ball',computer_choice,result_msg);
+        
 
     "
       >
@@ -36,10 +34,15 @@
       computer_choice= genrate_comp_choice();
       result_msg=getresult(computer_choice,'Stump');
      
-              alert(`You have chosen Stump, Computer choice is ${computer_choice} and ${result_msg}`);
+      showresult('Stump',computer_choice,result_msg);
   
       ">Stump</button>
       <script>
+        let score={
+          win:0,
+          loss:0,
+          tie:0
+        };
         function genrate_comp_choice() {
           let random_number = Math.random() * 3;
 
@@ -54,31 +57,47 @@
         function getresult(computer_choice, user_move) {
           if (user_move === "Bat") {
             if (computer_choice == "Ball") {
+              score.win++;
               return "User won";
             } else if (computer_choice == "Bat") {
+              score.tie++;
               return "Its a tie";
             } else {
+              score.loss++;
               return "Computer won";
             }
           } else if (user_move === "Ball") {
             if (computer_choice == "Ball") {
+              score.tie++;
               return "User tie";
             } else if (computer_choice == "Bat") {
+              score.loss++;
               return "Computer won";
             } else {
+              score.won++;
               return "User won";
             }
           } else {
             if(computer_choice==="Bat"){
+              score.win++;
                 return "User won";
             }
             else if(computer_choice==="Ball"){
+              score.loss++;
                 return "Computer won";
             }
             else{
+              score.tie++;
                 return "Its a tie"
             }
           }
+        }
+
+        function showresult(userchoice,computer_choice,result_msg){
+          alert(`You have chosen ${userchoice}, Computer choice is ${computer_choice} and ${result_msg}
+               
+                Your score is win:${score.win},loss:${score.loss},tie:${score.tie}
+          `)
         }
       </script>
     </div>
